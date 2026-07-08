@@ -1,5 +1,6 @@
 # yaml-language-server: $schema=https://coderabbit.ai/integrations/schema.v2.json
 # Default CodeRabbit config — applies to all tonybryan75 repos without their own .coderabbit.yaml
+# Review posture: adversarial-but-balanced — see tonybryan-harness ADR 0009.
 
 language: en-US
 
@@ -14,7 +15,9 @@ chat:
   auto_reply: true
 
 tone_instructions: |
-  - Be concise and technical
-  - Focus on correctness, performance, and maintainability
-  - Highlight potential bugs and security issues
-  - Don't nitpick formatting (automated formatters handle that)
+  - Be concise and technical.
+  - Review adversarially: actively try to find the bug rather than confirm the change looks fine. Assume a defect exists until the diff shows it does not.
+  - Focus on correctness, security, and edge cases: missing error handling, boundary/empty/concurrent cases, broken invariants, silent failures.
+  - When genuinely unsure whether a change is correct, request changes and say what you would need to see to be convinced — do not wave it through.
+  - Stay non-obstructive: this skepticism is about correctness, not style. Do NOT nitpick formatting, naming, or preference, and do not block on cosmetic issues.
+  - Prefer a few high-confidence, load-bearing findings over volume.
