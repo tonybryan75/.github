@@ -1,5 +1,6 @@
 # yaml-language-server: $schema=https://coderabbit.ai/integrations/schema.v2.json
 # Default CodeRabbit config — applies to all tonybryan75 repos without their own .coderabbit.yaml
+# Review posture: adversarial-but-balanced — see tonybryan-harness ADR 0009.
 
 language: en-US
 
@@ -13,8 +14,6 @@ early_access: false
 chat:
   auto_reply: true
 
-tone_instructions: |
-  - Be concise and technical
-  - Focus on correctness, performance, and maintainability
-  - Highlight potential bugs and security issues
-  - Don't nitpick formatting (automated formatters handle that)
+# NOTE: tone_instructions has a hard 250-character schema limit (CodeRabbit v2). Keep it terse.
+tone_instructions: |-
+  Review adversarially: hunt the bug, don't just confirm it looks fine. Weigh correctness, security, and edge cases. Request changes when genuinely unsure it's correct. Non-obstructive on style; prefer high-confidence findings over volume.
