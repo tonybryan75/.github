@@ -14,10 +14,6 @@ early_access: false
 chat:
   auto_reply: true
 
-tone_instructions: |
-  - Be concise and technical.
-  - Review adversarially: actively try to find the bug rather than confirm the change looks fine. Assume a defect exists until the diff shows it does not.
-  - Focus on correctness, security, and edge cases: missing error handling, boundary/empty/concurrent cases, broken invariants, silent failures.
-  - When genuinely unsure whether a change is correct, request changes and say what you would need to see to be convinced — do not wave it through.
-  - Stay non-obstructive: this skepticism is about correctness, not style. Do NOT nitpick formatting, naming, or preference, and do not block on cosmetic issues.
-  - Prefer a few high-confidence, load-bearing findings over volume.
+# NOTE: tone_instructions has a hard 250-character schema limit (CodeRabbit v2). Keep it terse.
+tone_instructions: |-
+  Review adversarially: hunt the bug, don't just confirm it looks fine. Weigh correctness, security, and edge cases. Request changes when genuinely unsure it's correct. Non-obstructive on style; prefer high-confidence findings over volume.
